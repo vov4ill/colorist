@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box" style="background: ''">
+        <h1 class="title"></h1>
+    </div>
+
+    <script>
+        const color = document.getElementsByClassName('box')[0];
+        const title = document.getElementsByClassName('title')[0];
+
+        let randomColor = () => {
+            let numberColor = '0123456789ABCDEF'
+            let beginColor = '#'
+            for (let i = 0; i < 6; i++) {
+                beginColor+=numberColor[Math.floor(Math.random()*16)]
+            }
+            return beginColor
+        }
+        let valueColor = randomColor()
+
+        let time = setInterval(() => {
+            color.style.background = randomColor();
+        }, 100);
+            
+        color.style.background = 'red'
+        console.log(color.style.background)
+        
+        color.onclick = function click() {
+            clearInterval(time);
+            title.textContent = valueColor;
+        }
+    </script>
+</body>
+</html>
